@@ -3,45 +3,66 @@ import 'package:flutter/material.dart';
 class PasswordResetScreen extends StatelessWidget {
   const PasswordResetScreen({super.key});
 
+  void _resetPassword(BuildContext context, GlobalKey<FormState> formKey) {
+    if (!formKey.currentState!.validate()) {
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (BuildContext ctx) {
+        return const AlertDialog(
+          title: Text('Message'),
+          content: Text('Need to implement'),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Reset Password')),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextField(
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
+        child: Form(
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextFormField(
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.emailAddress,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'This field cannot be empty';
+                  }
+                  final emailRegex =
+                  RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
+                  if (!emailRegex.hasMatch(value)) {
+                    return 'Invalid email';
+                  }
+                  return null;
+                },
               ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext ctx) {
-                    return const AlertDialog(
-                      title: Text('Message'),
-                      content: Text('Need to implement'),
-                    );
-                  },
-                );
-              },
-              child: const Text('Reset Password'),
-            ),
-            const SizedBox(height: 8),
-            OutlinedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Back'),
-            ),
-          ],
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () => _resetPassword(context, formKey),
+                child: const Text('Reset Password'),
+              ),
+              const SizedBox(height: 8),
+              OutlinedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Back'),
+              ),
+            ],
+          ),
         ),
       ),
     );
