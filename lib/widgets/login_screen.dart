@@ -39,6 +39,13 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Image.network(
+              'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Google_Workspace_product_icons_%282020%29.svg/1024px-Google_Workspace_product_icons_%282020%29.svg.png',
+              width: 200,
+              height: 50,
+              fit: BoxFit.cover,
+            ),
+            SizedBox(height: 50),
             TextField(
               decoration: const InputDecoration(
                 labelText: 'Username',
