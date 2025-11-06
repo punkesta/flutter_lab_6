@@ -5,22 +5,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final signUpBtnStyle = FilledButton.styleFrom(
-      backgroundColor: Colors.green,
-      foregroundColor: Colors.white,
-      disabledBackgroundColor: Colors.green.shade200,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    );
-
-    final backBtnStyle = FilledButton.styleFrom(
-      backgroundColor: Colors.grey,
-      foregroundColor: Colors.white,
-      disabledBackgroundColor: Colors.grey.shade200,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-    );
-
     return Scaffold(
       appBar: AppBar(title: const Text('Sign Up')),
       body: Padding(
@@ -51,8 +35,7 @@ class SignUpScreen extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 20),
-            FilledButton(
-              style: signUpBtnStyle,
+            ElevatedButton(
               onPressed: () {
                 showDialog(
                   context: context,
@@ -67,8 +50,7 @@ class SignUpScreen extends StatelessWidget {
               child: const Text('Sign Up'),
             ),
             const SizedBox(height: 8),
-            FilledButton(
-              style: backBtnStyle,
+            OutlinedButton(
               onPressed: () {
                 Navigator.pop(context);
               },

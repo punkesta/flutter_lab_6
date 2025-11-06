@@ -7,30 +7,6 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginBtnStyle = FilledButton.styleFrom(
-      backgroundColor: Colors.blue,
-      foregroundColor: Colors.white,
-      disabledBackgroundColor: Colors.blue.shade200,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    );
-
-    final signUpBtnStyle = FilledButton.styleFrom(
-      backgroundColor: Colors.green,
-      foregroundColor: Colors.white,
-      disabledBackgroundColor: Colors.green.shade200,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    );
-
-    final resetPwdBtnStyle = FilledButton.styleFrom(
-      backgroundColor: Colors.grey,
-      foregroundColor: Colors.white,
-      disabledBackgroundColor: Colors.grey.shade200,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    );
-
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: Padding(
@@ -61,8 +37,7 @@ class LoginScreen extends StatelessWidget {
               obscureText: true,
             ),
             const SizedBox(height: 20),
-            FilledButton(
-              style: loginBtnStyle,
+            ElevatedButton(
               onPressed: () {
                 showDialog(
                   context: context,
@@ -80,8 +55,7 @@ class LoginScreen extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: FilledButton(
-                    style: signUpBtnStyle,
+                  child: OutlinedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -95,8 +69,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: OutlinedButton(
-                    style: resetPwdBtnStyle,
+                  child: TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,

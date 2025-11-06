@@ -5,22 +5,6 @@ class PasswordResetScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final resetPwdBtnStyle = FilledButton.styleFrom(
-      backgroundColor: Colors.blue,
-      foregroundColor: Colors.white,
-      disabledBackgroundColor: Colors.blue.shade200,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    );
-
-    final backBtnStyle = FilledButton.styleFrom(
-      backgroundColor: Colors.grey,
-      foregroundColor: Colors.white,
-      disabledBackgroundColor: Colors.grey.shade200,
-      padding: const EdgeInsets.symmetric(vertical: 16),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    );
-
     return Scaffold(
       appBar: AppBar(title: const Text('Reset Password')),
       body: Padding(
@@ -37,7 +21,6 @@ class PasswordResetScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              style: resetPwdBtnStyle,
               onPressed: () {
                 showDialog(
                   context: context,
@@ -52,8 +35,7 @@ class PasswordResetScreen extends StatelessWidget {
               child: const Text('Reset Password'),
             ),
             const SizedBox(height: 8),
-            ElevatedButton(
-              style: backBtnStyle,
+            OutlinedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
